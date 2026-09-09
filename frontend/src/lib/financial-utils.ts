@@ -66,6 +66,23 @@ export function computeMonthlyData(
     });
 }
 
+export function computePeriodLabel(movements: FinancialMovement[]): string {
+  if (movements.length === 0) {
+    return "No data available";
+  }
+
+  const sortedDates = movements
+    .map((m) => new Date(m.create_date))
+    .sort((a, b) => a.getTime() - b.getTime());
+
+  const startLabel = formatMonthYearLabel(toYearMonthKey(sortedDates[0]));
+  const endLabel = formatMonthYearLabel(
+    toYearMonthKey(sortedDates[sortedDates.length - 1]),
+  );
+
+  return startLabel === endLabel ? startLabel : `${startLabel} - ${endLabel}`;
+}
+
 export function formatCurrency(value: number): string {
   return new Intl.NumberFormat("en-US", {
     style: "currency",

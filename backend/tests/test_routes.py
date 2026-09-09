@@ -26,6 +26,21 @@ def test_filter_movements_by_date_includes_range_edges():
     assert all(movement.create_date == target_date for movement in filtered)
 
 
+def test_metrics_response_matches_frontend_contract_fields():
+    # Keep in sync with FinancialMovement in frontend/src/lib/financial-types.ts
+    response = client.get("/api/metrics")
+    payload = response.json()
+
+    expected_fields = {
+        "create_date",
+        "amount",
+        "operation_type",
+        "category",
+        "business_type",
+    }
+    assert set(payload[0].keys()) == expected_fields
+
+
 def test_health_endpoint_returns_ok():
     response = client.get("/health")
 

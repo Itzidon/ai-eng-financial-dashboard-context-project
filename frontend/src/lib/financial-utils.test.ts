@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
   computeKPIs,
   computeMonthlyData,
+  computePeriodLabel,
   formatCurrency,
   formatPercent,
 } from "./financial-utils";
@@ -100,6 +101,20 @@ describe("computeMonthlyData", () => {
       outcome: 0,
       profitPercent: 100,
     });
+  });
+});
+
+describe("computePeriodLabel", () => {
+  it("returns a single month label when all movements share the same month", () => {
+    expect(computePeriodLabel(sampleMovements.slice(0, 2))).toBe("Jan 2024");
+  });
+
+  it("returns a range label spanning the earliest and latest months", () => {
+    expect(computePeriodLabel(sampleMovements)).toBe("Jan 2024 - Feb 2024");
+  });
+
+  it("returns a fallback label when there are no movements", () => {
+    expect(computePeriodLabel([])).toBe("No data available");
   });
 });
 
