@@ -89,3 +89,35 @@ Evidence: [verification.md](../verification.md),
 
   Evidence: [backend/tests/test_routes.py](../backend/tests/test_routes.py),
   [.agents/rules/data-contracts.md](../.agents/rules/data-contracts.md).
+
+## Agent skills applied
+
+This branch improves the financial dashboard through reusable agent skills and verified repository-specific guidance.
+
+- `accessibility`
+  - Improved semantic headings and reduced-motion behavior.
+  - Added an accessible data alternative for the profit percentage chart.
+  - Verified changes with frontend tests, lint and build.
+
+- `vercel-react-best-practices`
+  - Applied immutable sorting with `toSorted()` in `frontend/src/lib/financial-utils.ts`.
+  - Kept the existing Docker proxy configuration unchanged at `http://backend:8000`.
+  - Verified tests, lint and build after the change.
+
+- `typescript`
+  - Normalized type-only imports using `import type`.
+  - Verified the frontend still passes tests, lint and build.
+
+## Internal project skill
+
+Added `.skills/dashboard-pre-merge/SKILL.md`.
+
+The skill validates this repository before merge by checking:
+
+- frontend tests
+- frontend lint
+- frontend production build
+- Vite `/api` proxy target remains `http://backend:8000`
+- current `git status`
+
+The skill was executed successfully against the current branch.
