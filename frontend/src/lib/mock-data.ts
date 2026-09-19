@@ -1,4 +1,4 @@
-import { type FinancialMovement } from './financial-types'
+import type { FinancialMovement } from './financial-types'
 
 export const mockMovements: FinancialMovement[] = [
   // January

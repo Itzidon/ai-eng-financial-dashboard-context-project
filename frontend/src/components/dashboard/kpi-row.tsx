@@ -1,5 +1,5 @@
 import { KPICard } from './kpi-card'
-import { type KPIMetrics } from '@/lib/financial-types'
+import type { KPIMetrics } from '@/lib/financial-types'
 import { formatCurrency, formatPercent } from '@/lib/financial-utils'
 import { TrendingUp, TrendingDown, DollarSign, BarChart2 } from 'lucide-react'
 

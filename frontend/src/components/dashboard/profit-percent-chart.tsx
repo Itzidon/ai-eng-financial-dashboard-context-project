@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Skeleton } from '@/components/ui/skeleton'
-import { type MonthlyDataPoint } from '@/lib/financial-types'
+import type { MonthlyDataPoint } from '@/lib/financial-types'
 import {
   LineChart,
   Line,
