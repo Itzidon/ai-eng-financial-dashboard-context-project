@@ -89,3 +89,57 @@ Evidence: [verification.md](../verification.md),
 
   Evidence: [backend/tests/test_routes.py](../backend/tests/test_routes.py),
   [.agents/rules/data-contracts.md](../.agents/rules/data-contracts.md).
+
+## Agent skills applied
+
+This branch improves the financial dashboard through reusable agent skills and verified repository-specific guidance.
+
+- `accessibility`
+  - Improved semantic headings and reduced-motion behavior.
+  - Added an accessible data alternative for the profit percentage chart.
+  - Verified changes with frontend tests, lint and build.
+
+- `vercel-react-best-practices`
+  - Applied immutable sorting with `toSorted()` in `frontend/src/lib/financial-utils.ts`.
+  - Kept the existing Docker proxy configuration unchanged at `http://backend:8000`.
+  - Verified tests, lint and build after the change.
+
+- `typescript`
+  - Normalized type-only imports using `import type`.
+  - Verified the frontend still passes tests, lint and build.
+
+## Internal project skill
+
+Added `.skills/dashboard-pre-merge/SKILL.md`.
+
+The skill validates this repository before merge by checking:
+
+- frontend tests
+- frontend lint
+- frontend production build
+- Vite `/api` proxy target remains `http://backend:8000`
+- current `git status`
+
+The skill was executed successfully against the current branch.
+
+## Final skill verification
+
+### Accessibility verification
+
+The `accessibility` skill was verified against the running dashboard.
+
+- The dashboard loads successfully with financial data and both charts rendered.
+- Keyboard navigation was manually verified with `Tab`; the chart receives keyboard focus and exposes a clearly visible focus indicator.
+- Accessibility semantics verified in the frontend include:
+  - `role="alert"`
+  - `role="status"`
+  - `aria-label="Key performance indicators"`
+  - `aria-label="Financial charts"`
+- A repository search found no HTML `<img>` elements under `frontend/src`, so there are no applicable image `alt` attributes missing in the current dashboard.
+- A basic visual contrast check was performed on the running interface: primary text, KPI values, chart labels and the keyboard focus indicator remain distinguishable against the dark background.
+
+### Additional ecosystem skill justification
+
+The additional `typescript` skill was selected after exploring the skills ecosystem because the frontend is implemented in TypeScript and the skill identified a concrete improvement supported by this repository: using explicit type-only imports.
+
+The change improves type intent without changing runtime behavior and was verified with the existing frontend tests, lint and production build.

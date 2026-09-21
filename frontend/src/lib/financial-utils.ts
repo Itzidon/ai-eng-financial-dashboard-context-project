@@ -52,7 +52,7 @@ export function computeMonthlyData(
   }
 
   return Object.keys(monthlyMap)
-    .sort()
+    .toSorted()
     .map((yearMonthKey) => {
       const { income, outcome } = monthlyMap[yearMonthKey];
       const profit = income - outcome;
@@ -73,7 +73,7 @@ export function computePeriodLabel(movements: FinancialMovement[]): string {
 
   const sortedDates = movements
     .map((m) => new Date(m.create_date))
-    .sort((a, b) => a.getTime() - b.getTime());
+    .toSorted((a, b) => a.getTime() - b.getTime());
 
   const startLabel = formatMonthYearLabel(toYearMonthKey(sortedDates[0]));
   const endLabel = formatMonthYearLabel(
