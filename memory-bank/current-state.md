@@ -121,3 +121,25 @@ The skill validates this repository before merge by checking:
 - current `git status`
 
 The skill was executed successfully against the current branch.
+
+## Final skill verification
+
+### Accessibility verification
+
+The `accessibility` skill was verified against the running dashboard.
+
+- The dashboard loads successfully with financial data and both charts rendered.
+- Keyboard navigation was manually verified with `Tab`; the chart receives keyboard focus and exposes a clearly visible focus indicator.
+- Accessibility semantics verified in the frontend include:
+  - `role="alert"`
+  - `role="status"`
+  - `aria-label="Key performance indicators"`
+  - `aria-label="Financial charts"`
+- A repository search found no HTML `<img>` elements under `frontend/src`, so there are no applicable image `alt` attributes missing in the current dashboard.
+- A basic visual contrast check was performed on the running interface: primary text, KPI values, chart labels and the keyboard focus indicator remain distinguishable against the dark background.
+
+### Additional ecosystem skill justification
+
+The additional `typescript` skill was selected after exploring the skills ecosystem because the frontend is implemented in TypeScript and the skill identified a concrete improvement supported by this repository: using explicit type-only imports.
+
+The change improves type intent without changing runtime behavior and was verified with the existing frontend tests, lint and production build.
